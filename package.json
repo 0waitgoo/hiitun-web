@@ -1,0 +1,33 @@
+{
+  "name": "hiitun-盒豚生活",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:mobile": "node mobile-build.js && vite build",
+    "build:vercel": "node vercel-build.js && vite build",
+    "preview": "vite preview",
+    "test:performance": "node -e \"console.log('请在浏览器控制台中运行 performance-test.js 来测试性能')\""
+  },
+  "dependencies": {
+    "lucide-react": "^0.562.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "tailwindcss": "^3.4.19"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "autoprefixer": "^10.4.23",
+    "postcss": "^8.5.6",
+    "terser": "^5.44.1",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0",
+    "vite-plugin-pwa": "^0.19.3",
+    "rollup-plugin-visualizer": "^5.9.2",
+    "vite-bundle-analyzer": "^0.7.0",
+    "compression": "^1.7.4"
+  }
+}

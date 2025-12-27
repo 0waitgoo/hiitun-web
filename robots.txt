@@ -1,0 +1,35 @@
+User-agent: *
+Allow: /
+
+# 允许百度爬虫
+User-agent: Baiduspider
+Allow: /
+
+# 允许谷歌爬虫
+User-agent: Googlebot
+Allow: /
+
+# 允许微信爬虫
+User-agent: MicroMessenger
+Allow: /
+
+# 允许必应爬虫
+User-agent: Bingbot
+Allow: /
+
+# 允许搜狗爬虫
+User-agent: Sogou spider
+Allow: /
+
+# 禁止爬虫访问的目录和文件
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /dist/
+Disallow: /*.json
+Disallow: /*.patch
+
+# Sitemap
+Sitemap: https://vercel.hiitun01.top/sitemap.xml
+
+# 爬虫抓取频率
+Crawl-delay: 10

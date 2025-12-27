@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移动端性能测试</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #0CA5EB;
+            text-align: center;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .metric {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0CA5EB;
+        }
+        .metric-label {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+        button {
+            background: #0CA5EB;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #0990d9;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .test-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>移动端性能测试</h1>
+        
+        <div class="test-section">
+            <h2>测试说明</h2>
+            <p>此页面用于测试移动端性能优化效果。点击下面的按钮开始测试各项性能指标。</p>
+            <div class="status info">
+                <strong>提示：</strong> 请在移动设备或移动设备模拟器中测试以获得最佳结果。
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>测试控制</h2>
+            <button onclick="runPerformanceTest()">运行性能测试</button>
+            <button onclick="testImageLoading()">测试图片加载</button>
+            <button onclick="testScrollPerformance()">测试滚动性能</button>
+            <button onclick="clearResults()">清除结果</button>
+        </div>
+        
+        <div class="test-section">
+            <h2>性能指标</h2>
+            <div class="metrics">
+                <div class="metric">
+                    <div class="metric-value" id="fcp">-</div>
+                    <div class="metric-label">首次内容绘制 (FCP)</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value" id="lcp">-</div>
+                    <div class="metric-label">最大内容绘制 (LCP)</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value" id="fid">-</div>
+                    <div class="metric-label">首次输入延迟 (FID)</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value" id="cls">-</div>
+                    <div class="metric-label">累积布局偏移 (CLS)</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value" id="ttfb">-</div>
+                    <div class="metric-label">首字节时间 (TTFB)</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value" id="score">-</div>
+                    <div class="metric-label">性能评分</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>图片加载测试</h2>
+            <div id="image-test-container">
+                <p>点击"测试图片加载"按钮开始测试</p>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>测试结果</h2>
+            <div id="test-results">
+                <p>运行测试后，结果将显示在这里</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 性能测试函数
+        function runPerformanceTest() {
+            updateStatus('正在运行性能测试...', 'info');
+            
+            // 重置指标
+            document.getElementById('fcp').textContent = '测试中...';
+            document.getElementById('lcp').textContent = '测试中...';
+            document.getElementById('fid').textContent = '测试中...';
+            document.getElementById('cls').textContent = '测试中...';
+            document.getElementById('ttfb').textContent = '测试中...';
+            document.getElementById('score').textContent = '计算中...';
+            
+            // 获取导航时间
+            const navigation = performance.getEntriesByType('navigation')[0];
+            const ttfb = navigation.responseStart - navigation.requestStart;
+            document.getElementById('ttfb').textContent = `${ttfb.toFixed(2)}ms`;
+            
+            // 测量FCP
+            const observer = new PerformanceObserver((list) => {
+                const entries = list.getEntries();
+                entries.forEach((entry) => {
+                    if (entry.name === 'first-contentful-paint') {
+                        document.getElementById('fcp').textContent = `${entry.startTime.toFixed(2)}ms`;
+                    }
+                });
+            });
+            
+            observer.observe({ entryTypes: ['paint'] });
+            
+            // 测量LCP
+            const lcpObserver = new PerformanceObserver((list) => {
+                const entries = list.getEntries();
+                const lastEntry = entries[entries.length - 1];
+                document.getElementById('lcp').textContent = `${lastEntry.startTime.toFixed(2)}ms`;
+                
+                // 计算性能评分
+                calculateScore();
+            });
+            
+            lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+            
+            // 测量FID
+            const fidObserver = new PerformanceObserver((list) => {
+                const entries = list.getEntries();
+                entries.forEach((entry) => {
+                    if (entry.processingStart) {
+                        const fid = entry.processingStart - entry.startTime;
+                        document.getElementById('fid').textContent = `${fid.toFixed(2)}ms`;
+                    }
+                });
+            });
+            
+            fidObserver.observe({ entryTypes: ['first-input'] });
+            
+            // 测量CLS
+            let clsScore = 0;
+            const clsObserver = new PerformanceObserver((list) => {
+                const entries = list.getEntries();
+                entries.forEach((entry) => {
+                    if (!entry.hadRecentInput) {
+                        clsScore += entry.value;
+                        document.getElementById('cls').textContent = clsScore.toFixed(4);
+                    }
+                });
+            });
+            
+            clsObserver.observe({ entryTypes: ['layout-shift'] });
+            
+            updateStatus('性能测试完成！请查看下方指标。', 'success');
+        }
+        
+        // 计算性能评分
+        function calculateScore() {
+            setTimeout(() => {
+                const fcp = parseFloat(document.getElementById('fcp').textContent);
+                const lcp = parseFloat(document.getElementById('lcp').textContent);
+                const fid = parseFloat(document.getElementById('fid').textContent);
+                const cls = parseFloat(document.getElementById('cls').textContent);
+                const ttfb = parseFloat(document.getElementById('ttfb').textContent);
+                
+                let score = 0;
+                let maxScore = 5;
+                
+                // FCP评分
+                if (fcp < 1800) score++;
+                // LCP评分
+                if (lcp < 2500) score++;
+                // FID评分
+                if (fid < 100) score++;
+                // CLS评分
+                if (cls < 0.1) score++;
+                // TTFB评分
+                if (ttfb < 600) score++;
+                
+                document.getElementById('score').textContent = `${score}/${maxScore}`;
+                
+                // 提供优化建议
+                let suggestions = [];
+                if (fcp >= 1800) suggestions.push('优化FCP：减少服务器响应时间，优化关键渲染路径');
+                if (lcp >= 2500) suggestions.push('优化LCP：优化图片加载，减少主线程工作');
+                if (fid >= 100) suggestions.push('优化FID：减少JavaScript执行时间，拆分长任务');
+                if (cls >= 0.1) suggestions.push('优化CLS：为图片和视频设置尺寸，避免插入内容');
+                if (ttfb >= 600) suggestions.push('优化TTFB：使用CDN，优化服务器响应时间');
+                
+                let resultHTML = `<h3>性能评分: ${score}/${maxScore}</h3>`;
+                
+                if (score >= 4) {
+                    resultHTML += '<div class="status success">性能优秀！</div>';
+                } else if (score >= 3) {
+                    resultHTML += '<div class="status warning">性能良好，但仍有优化空间</div>';
+                } else {
+                    resultHTML += '<div class="status error">性能需要改进</div>';
+                }
+                
+                if (suggestions.length > 0) {
+                    resultHTML += '<h4>优化建议:</h4><ul>';
+                    suggestions.forEach(suggestion => {
+                        resultHTML += `<li>${suggestion}</li>`;
+                    });
+                    resultHTML += '</ul>';
+                }
+                
+                document.getElementById('test-results').innerHTML = resultHTML;
+            }, 1000);
+        }
+        
+        // 测试图片加载
+        function testImageLoading() {
+            const container = document.getElementById('image-test-container');
+            container.innerHTML = '<p>正在加载测试图片...</p>';
+            
+            const startTime = performance.now();
+            const img = new Image();
+            
+            img.onload = function() {
+                const loadTime = performance.now() - startTime;
+                container.innerHTML = `
+                    <p>图片加载完成！</p>
+                    <img src="https://picsum.photos/seed/test${Date.now()}/800/400.jpg" class="test-image" alt="测试图片">
+                    <p>加载时间: ${loadTime.toFixed(2)}ms</p>
+                `;
+            };
+            
+            img.onerror = function() {
+                container.innerHTML = '<p class="status error">图片加载失败</p>';
+            };
+            
+            img.src = `https://picsum.photos/seed/test${Date.now()}/800/400.jpg`;
+        }
+        
+        // 测试滚动性能
+        function testScrollPerformance() {
+            updateStatus('滚动性能测试：请快速滚动页面', 'info');
+            
+            let scrollEvents = 0;
+            let lastScrollTime = performance.now();
+            
+            const handleScroll = () => {
+                scrollEvents++;
+                const currentTime = performance.now();
+                const timeSinceLastScroll = currentTime - lastScrollTime;
+                lastScrollTime = currentTime;
+                
+                if (scrollEvents % 10 === 0) {
+                    console.log(`滚动事件 #${scrollEvents}, 间隔: ${timeSinceLastScroll.toFixed(2)}ms`);
+                }
+            };
+            
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            
+            setTimeout(() => {
+                window.removeEventListener('scroll', handleScroll);
+                updateStatus(`滚动性能测试完成！共记录到 ${scrollEvents} 次滚动事件。`, 'success');
+            }, 5000);
+        }
+        
+        // 清除结果
+        function clearResults() {
+            document.getElementById('fcp').textContent = '-';
+            document.getElementById('lcp').textContent = '-';
+            document.getElementById('fid').textContent = '-';
+            document.getElementById('cls').textContent = '-';
+            document.getElementById('ttfb').textContent = '-';
+            document.getElementById('score').textContent = '-';
+            document.getElementById('test-results').innerHTML = '<p>运行测试后，结果将显示在这里</p>';
+            document.getElementById('image-test-container').innerHTML = '<p>点击"测试图片加载"按钮开始测试</p>';
+            updateStatus('结果已清除', 'info');
+        }
+        
+        // 更新状态
+        function updateStatus(message, type) {
+            const statusDiv = document.createElement('div');
+            statusDiv.className = `status ${type}`;
+            statusDiv.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            
+            const resultsContainer = document.getElementById('test-results');
+            resultsContainer.insertBefore(statusDiv, resultsContainer.firstChild);
+            
+            // 限制状态消息数量
+            const statusMessages = resultsContainer.querySelectorAll('.status');
+            if (statusMessages.length > 5) {
+                resultsContainer.removeChild(statusMessages[statusMessages.length - 1]);
+            }
+        }
+        
+        // 页面加载完成后显示设备信息
+        window.addEventListener('load', () => {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            const deviceInfo = `
+                <h3>设备信息</h3>
+                <p>设备类型: ${isMobile ? '移动设备' : '桌面设备'}</p>
+                <p>用户代理: ${navigator.userAgent.substring(0, 100)}...</p>
+                <p>屏幕分辨率: ${window.screen.width}x${window.screen.height}</p>
+            `;
+            
+            if (navigator.connection) {
+                deviceInfo += `<p>网络类型: ${navigator.connection.effectiveType}</p>`;
+                deviceInfo += `<p>下行速度: ${navigator.connection.downlink}Mbps</p>`;
+            }
+            
+            updateStatus(deviceInfo, 'info');
+        });
+    </script>
+</body>
+</html>

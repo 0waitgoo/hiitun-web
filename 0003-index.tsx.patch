@@ -1,0 +1,31 @@
+From 05c6f62a8b94a10b1b668677a326cf57ae044432 Mon Sep 17 00:00:00 2001
+From: HIITUN Developer <developer@hiitun.com>
+Date: Fri, 26 Dec 2025 05:13:35 +0800
+Subject: [PATCH 3/3] =?UTF-8?q?=E4=BF=AE=E5=A4=8Dindex.tsx=E4=B8=AD?=
+ =?UTF-8?q?=E7=9A=84=E5=AF=BC=E5=85=A5=E8=AF=AD=E5=8F=A5=E9=97=AE=E9=A2=98?=
+ =?UTF-8?q?=EF=BC=8C=E7=A1=AE=E4=BF=9D=E6=AD=A3=E7=A1=AE=E6=9E=84=E5=BB=BA?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ index.tsx | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/index.tsx b/index.tsx
+index d1caf51..caa4c58 100644
+--- a/index.tsx
++++ b/index.tsx
+@@ -1,9 +1,7 @@
+-```
+ import React, { useState, useEffect } from 'react';
+ import ReactDOM from 'react-dom/client';
+ import App from './App';
+ import './index.css';
+-```
+ 
+ // 创建一个包装组件来处理客户端渲染
+ const ClientOnlyApp = () => {
+-- 
+2.52.0.windows.1
+
