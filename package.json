@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "build:mobile": "node mobile-build.js && vite build",
-    "build:vercel": "node vercel-build.js && vite build",
+    "build:vercel": "vite build",
     "preview": "vite preview",
     "test:performance": "node -e \"console.log('请在浏览器控制台中运行 performance-test.js 来测试性能')\""
   },

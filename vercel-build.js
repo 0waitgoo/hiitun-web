@@ -1,12 +1,8 @@
 // Vercel构建脚本
 // 这个脚本专门用于Vercel环境，避免使用可能导致问题的配置
 
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const fs = require('fs');
+const path = require('path');
 
 console.log('开始Vercel环境构建优化...');
 

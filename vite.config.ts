@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
-      base: './',
+      base: mode === 'production' ? '/' : './',
       server: {
         port: 3000,
         host: '0.0.0.0',
@@ -42,7 +42,7 @@ export default defineConfig(({ mode }) => {
         terserOptions: {
           compress: {
             // 移除console.log
-            drop_console: true,
+            drop_console: mode === 'production',
             // 移除debugger
             drop_debugger: true,
           },
@@ -55,6 +55,10 @@ export default defineConfig(({ mode }) => {
         brotliSize: true, // 生成brotli压缩文件
         // 设置chunk大小警告限制
         chunkSizeWarningLimit: 1000,
+        // 确保输出目录是dist
+        outDir: 'dist',
+        // 确保静态资源目录正确
+        assetsDir: 'assets',
       },
       // 预览服务器配置
       preview: {
