@@ -445,9 +445,30 @@ const App: React.FC = () => {
             ))}
         </div>
 
-        <p className="mt-10 text-white/40 text-sm relative z-10">
-          © 2024 HIITUN 盒豚生活. 专注于电商导购返利的省钱助手.
-        </p>
+        <div className="mt-10 text-white/55 text-xs md:text-sm relative z-10 flex flex-col items-center gap-2 leading-relaxed">
+          <div className="flex flex-wrap justify-center items-center gap-x-2 gap-y-1">
+            <span>粤ICP备2024198509号-5 / 粤ICP备2024198509号-6</span>
+            <span className="hidden md:inline text-white/30">|</span>
+            <span>©2024-2026</span>
+            <details className="relative inline-block group">
+              <summary className="list-none cursor-pointer text-white/80 hover:text-white underline decoration-white/30 underline-offset-4 transition-colors [&::-webkit-details-marker]:hidden">
+                佛山市南海区合豚互联网服务部
+              </summary>
+              <div className="absolute left-1/2 bottom-full z-20 mb-3 w-[min(88vw,420px)] -translate-x-1/2 rounded-xl border border-white/20 bg-slate-950/95 px-4 py-3 text-left text-xs text-white shadow-2xl backdrop-blur">
+                <p className="font-bold mb-1">企业名称：佛山市南海区盒豚互联网服务部</p>
+                <p className="text-white/75">企业地址：佛山市南海区里水镇里水大道南26好峰景湾10栋1304</p>
+              </div>
+            </details>
+          </div>
+          <a
+            href="https://beian.miit.gov.cn"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/60 hover:text-white underline decoration-white/25 underline-offset-4 transition-colors"
+          >
+            工信部：https://beian.miit.gov.cn
+          </a>
+        </div>
       </footer>
       <QRCodeModal 
         isOpen={isQRCodeModalOpen} 
