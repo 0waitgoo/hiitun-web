@@ -455,10 +455,18 @@ const App: React.FC = () => {
                 佛山市南海区合豚互联网服务部
               </summary>
               <div className="absolute left-1/2 bottom-full z-20 mb-3 w-[min(88vw,420px)] -translate-x-1/2 rounded-xl border border-white/20 bg-slate-950/95 px-4 py-3 text-left text-xs text-white shadow-2xl backdrop-blur">
-                <p className="font-bold mb-1">企业名称：佛山市南海区盒豚互联网服务部</p>
+                <p className="font-bold mb-1">企业名称：佛山市南海区合豚互联网服务部</p>
                 <p className="text-white/75">企业地址：佛山市南海区里水镇里水大道南26好峰景湾10栋1304</p>
               </div>
             </details>
+            <span className="hidden md:inline text-white/30">|</span>
+            <a href="/terms.html" className="text-white/70 hover:text-white underline decoration-white/25 underline-offset-4 transition-colors">
+              服务条款
+            </a>
+            <span className="text-white/30">|</span>
+            <a href="/privacy-policy.html" className="text-white/70 hover:text-white underline decoration-white/25 underline-offset-4 transition-colors">
+              隐私政策
+            </a>
           </div>
           <a
             href="https://beian.miit.gov.cn"
