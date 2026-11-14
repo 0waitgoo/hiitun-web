@@ -1,0 +1,48 @@
+User-agent: *
+Allow: /
+
+# 允许百度爬虫
+User-agent: Baiduspider
+Allow: /
+
+# 允许谷歌爬虫
+User-agent: Googlebot
+Allow: /
+
+# 允许微信爬虫
+User-agent: MicroMessenger
+Allow: /
+
+# 允许必应爬虫
+User-agent: Bingbot
+Allow: /
+
+# 允许搜狗爬虫
+User-agent: Sogou spider
+Allow: /
+
+# 允许 AI 搜索爬虫
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# 禁止爬虫访问的目录和文件
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /dist/
+Disallow: /*.json
+Disallow: /*.patch
+
+# Sitemap
+Sitemap: https://www.hiitun.top/sitemap.xml
+
+# 爬虫抓取频率
+Crawl-delay: 10

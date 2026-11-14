@@ -77,9 +77,9 @@ const App: React.FC = () => {
         
         {/* Floating Tags for Atmosphere */}
         <FloatingTag text="隐形优惠券" explanation="商家隐藏的大额优惠券，自动查找并应用" delay="0s" x="left-[10%]" y="top-[20%]" rotate="-5deg" />
-        <FloatingTag text="佣金秒到账" explanation="确认收货后佣金立即到账，无需等待" delay="1s" x="right-[10%]" y="top-[25%]" rotate="5deg" />
-        <FloatingTag text="AI 自动比价" explanation="AI智能比价，找到全网最低价格" delay="2s" x="left-[15%]" y="bottom-[30%]" rotate="3deg" />
-        <FloatingTag text="0手续费提现" explanation="提现无任何手续费，1元起提" delay="3s" x="right-[15%]" y="bottom-[25%]" rotate="-3deg" />
+        <FloatingTag text="返利每月25日到账" explanation="返利每月25日到账，到账后随时提现" delay="1s" x="right-[10%]" y="top-[25%]" rotate="5deg" />
+        <FloatingTag text="AI 自动比价" explanation="发「找+商品名」即可全平台比价" delay="2s" x="left-[15%]" y="bottom-[30%]" rotate="3deg" />
+        <FloatingTag text="0手续费提现" explanation="提现无手续费，到账后随时提现，支持支付宝和微信" delay="3s" x="right-[15%]" y="bottom-[25%]" rotate="-3deg" />
 
         <div className="max-w-5xl mx-auto relative z-10">
           {/* Badge */}
@@ -108,16 +108,16 @@ const App: React.FC = () => {
                 <Search size={14} /> 自动查券
              </div>
              <div className="flex items-center gap-1 bg-white/5 px-3 py-1 rounded-lg border border-white/10">
-                <TrendingUp size={14} /> 90%高佣
+                <TrendingUp size={14} /> 每月25日返利
              </div>
              <div className="flex items-center gap-1 bg-white/5 px-3 py-1 rounded-lg border border-white/10">
-                <Zap size={14} /> 极速提现
+                <Zap size={14} /> 随时提现
              </div>
           </div>
 
           <p className="text-lg md:text-xl font-medium text-blue-50/90 mb-12 max-w-2xl mx-auto leading-relaxed">
-            专为网购达人打造。支持<strong className="text-white border-b-2 border-white/30 mx-1">淘宝、京东、拼多多、抖音</strong>等全平台。
-            <br className="hidden md:block"/>关注公众号，AI机器人自动比价，每单都有佣金，提现秒到账。
+            专为网购达人打造。支持<strong className="text-white border-b-2 border-white/30 mx-1">淘宝、京东、拼多多、抖音、唯品会</strong>。
+            <br className="hidden md:block"/>关注公众号，复制商品链接发给公众号，自动解析领券下单；返利每月25日到账，到账后随时提现。
             <br className="hidden md:block"/><a href="#how-it-works" className="text-white underline hover:text-blue-200 transition-colors">查看查券教程</a>了解更多。
           </p>
 
@@ -156,13 +156,13 @@ const App: React.FC = () => {
             {PLATFORMS.map((p) => <MarqueeItem key={p.name} text={`${p.name}返利`} icon={p.icon} color={p.color} />)}
             <MarqueeItem text="隐藏大额券" icon="🎫" color="bg-purple-500" />
             <MarqueeItem text="AI比价" icon="🤖" color="bg-blue-600" />
-            <MarqueeItem text="极速提现" icon="⚡" color="bg-yellow-500" />
+            <MarqueeItem text="随时提现" icon="⚡" color="bg-yellow-500" />
             <MarqueeItem text="0手续费" icon="💸" color="bg-green-500" />
              {/* Duplicate for seamless loop */}
             {PLATFORMS.map((p) => <MarqueeItem key={`${p.name}-dup`} text={`${p.name}返利`} icon={p.icon} color={p.color} />)}
             <MarqueeItem text="隐藏大额券" icon="🎫" color="bg-purple-500" />
             <MarqueeItem text="AI比价" icon="🤖" color="bg-blue-600" />
-            <MarqueeItem text="极速提现" icon="⚡" color="bg-yellow-500" />
+            <MarqueeItem text="随时提现" icon="⚡" color="bg-yellow-500" />
             <MarqueeItem text="0手续费" icon="💸" color="bg-green-500" />
           </div>
         </div>
@@ -251,9 +251,9 @@ const App: React.FC = () => {
           {/* Text Side - Optimized for Keywords */}
           <div className="text-left space-y-8 relative z-30 md:pl-10">
             {[
-               { id: 1, title: "复制商品链接", desc: "打开淘宝、京东、拼多多、抖音等电商APP，找到想买的商品，长按标题或点击分享按钮，选择“拷贝链接”。" },
-               { id: 2, title: "发送给返利机器人", desc: "微信关注“盒豚生活”公众号或“盒豚查”，将链接直接发送。系统自动查询商家隐藏优惠券和返利金额。" },
-               { id: 3, title: "领券下单赚佣金", desc: "点击回复的链接/口令下单，不仅省下优惠券的钱，确认收货后还能获得现金返利，支持微信极速提现。" }
+               { id: 1, title: "复制商品链接", desc: "打开淘宝、京东、拼多多、抖音、唯品会等电商APP，找到想买的商品，长按标题或点击分享按钮，选择“拷贝链接”。" },
+               { id: 2, title: "发送给盒豚生活公众号", desc: "微信关注“盒豚生活”公众号，将链接直接发送。系统自动查询商家隐藏优惠券和返利金额。" },
+               { id: 3, title: "领券下单赚佣金", desc: "点击回复的链接/口令下单，不仅省下优惠券的钱，确认收货后还能获得现金返利。返利每月25日到账，到账后可随时提现到支付宝或微信，无手续费。" }
             ].map((step, idx) => (
                <div key={step.id} className="group flex gap-6 p-4 rounded-3xl hover:bg-white/5 transition-colors cursor-default">
                   <div className="flex-shrink-0">
@@ -283,10 +283,10 @@ const App: React.FC = () => {
                 每月25日自动结算
              </div>
              <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-               收益看得见，提现<span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-500">秒到账</span>
+               收益看得见，返利<span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-500">每月25日到账</span>
              </h2>
              <p className="text-lg text-blue-100/80 max-w-2xl mx-auto">
-               每一笔省下的钱都是赚到的。满1元即可申请提现，<strong>0手续费</strong>，实时到账微信零钱。
+               每一笔省下的钱都是赚到的。返利每月25日到账，到账后可随时提现到微信或支付宝，<strong>0手续费</strong>。
              </p>
           </div>
 
@@ -396,11 +396,11 @@ const App: React.FC = () => {
            <div className="grid md:grid-cols-2 gap-6">
               {[
                 { q: "什么是淘宝隐藏优惠券？", a: "淘宝隐藏优惠券是淘宝商家为了提升商品销量设置的非公开折扣。普通用户在淘宝APP里看不到，只有通过盒豚生活这样的专业查券工具才能找到并使用。", icon: Tag },
-                { q: "京东购物返利是真的吗？", a: "千真万确！京东购物返利是商家给推广者的广告费，盒豚生活通过京东官方接口将这笔广告费的大部分（最高90%）以现金返利的形式回馈给您。", icon: ShieldCheck },
-                { q: "拼多多查券机器人收费吗？", a: "完全免费！盒豚生活AI查券机器人不仅不收费，反而会帮您省钱赚钱。您只需要关注公众号即可永久免费使用查券、比价、返利服务。", icon: Zap },
-                { q: "抖音直播返利怎么提现？", a: "在盒豚生活公众号个人中心即可申请提现。支持提现到微信零钱和支付宝，满1元即可提现，系统自动打款，通常秒到账，无任何手续费。<a href='#earnings' className='text-blue-200 underline'>查看提现演示</a>", icon: Wallet },
+                { q: "返利什么时候到账？怎么提现？", a: "返利每月25日到账，到账后可随时提现。在盒豚生活公众号个人中心即可申请提现，支持提现到微信零钱和支付宝，无手续费。", icon: Wallet },
+                { q: "拼多多查券收费吗？", a: "查券和比价服务免费，您只需要关注公众号即可使用。", icon: Zap },
+                { q: "抖音直播返利怎么提现？", a: "在盒豚生活公众号个人中心即可申请提现。返利每月25日到账，到账后可随时提现到微信零钱和支付宝，无手续费。<a href='#earnings' className='text-blue-200 underline'>查看提现演示</a>", icon: Wallet },
                 { q: "盒豚生活能查哪些平台的隐藏优惠券？", a: "盒豚生活支持淘宝、京东、拼多多、抖音、唯品会等主流电商平台的隐藏优惠券查询和购物返利服务。", icon: Search },
-                { q: "使用盒豚生活有什么风险吗？", a: "没有任何风险！盒豚生活与各大电商平台官方合作，所有交易都在原电商平台完成，我们只提供优惠券查询和返利服务。", icon: ShieldCheck }
+                { q: "使用盒豚生活有什么风险吗？", a: "所有交易都在原电商平台完成，付款和售后由原平台或商家处理，盒豚生活只提供优惠券查询和返利服务。", icon: ShieldCheck }
               ].map((faq, i) => (
                  <div key={i} className="glass-card glass-card-hover p-6 rounded-2xl cursor-default group hover:bg-white/10">
                     <h3 className="flex items-center gap-3 font-bold text-lg mb-3 text-white group-hover:text-blue-200 transition-colors">
@@ -429,7 +429,7 @@ const App: React.FC = () => {
            <div className="absolute inset-0 bg-white rounded-full blur-xl opacity-30 group-hover:opacity-60 transition-opacity duration-500 animate-pulse"></div>
            <a href="https://mp.weixin.qq.com/s/Ak0rWbeGi0LtmbyqngAzlQ" target="_blank" rel="noopener noreferrer">
              <button className="relative bg-white text-[#0CA5EB] px-12 py-5 rounded-full font-black text-2xl shadow-2xl hover:scale-105 transition-transform flex items-center gap-3 border-4 border-white/50 bg-clip-padding">
-               微信搜索公众号: 盒豚查
+               微信搜索公众号：盒豚生活
                <ArrowRight className="group-hover:translate-x-1 transition-transform" />
              </button>
            </a>
