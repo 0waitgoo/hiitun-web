@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#070b16">
+  <meta name="description" content="登录 HIITUN 多账号运营工作台账号。">
+  <link rel="canonical" href="https://media.hiitun.top/account.html">
+  <meta property="og:url" content="https://media.hiitun.top/account.html">
+  <meta property="og:image" content="https://media.hiitun.top/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:site_name" content="HIITUN MATRIX">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="登录 · HIITUN 多账号运营">
+  <meta name="twitter:description" content="登录 HIITUN 多账号运营工作台账号。">
+  <meta name="twitter:image" content="https://media.hiitun.top/og-image.png">
+  <title>登录 · HIITUN 多账号运营</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preload" href="/assets/hiitun-media-logo.svg" as="image" type="image/svg+xml">
+  <script src="/theme-init.js"></script>
+  <script src="/analytics.js"></script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/account.css">
+  <script src="/account.js" defer></script>
+</head>
+<body class="account-page">
+  <a class="skip-link" href="#main" data-i18n="跳转到主要内容">跳转到主要内容</a>
+  <header class="site-header account-header">
+    <div class="header-inner page-width">
+      <a class="brand" href="/" aria-label="HIITUN 多账号运营首页">
+        <img src="/assets/hiitun-media-logo.svg" alt="HIITUN">
+        <span class="brand-divider" aria-hidden="true"></span>
+        <span class="brand-name" data-i18n="多账号运营">多账号运营</span>
+      </a>
+      <nav class="account-nav" aria-label="网站显示设置">
+        <a class="account-home" href="/" data-i18n="返回官网">← 返回官网</a>
+        <button class="utility-toggle" id="theme-toggle" type="button" aria-label="切换到白天模式" title="切换到白天模式"><span class="utility-icon" aria-hidden="true">☼</span><span class="theme-label">白天模式</span></button>
+        <button class="utility-toggle language-toggle" id="language-toggle" type="button" aria-label="切换到英文" title="切换到英文"><span class="language-label">EN</span></button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="account-shell page-width">
+      <section class="account-panel" aria-labelledby="account-title">
+        <p class="account-kicker" data-i18n="HIITUN ACCOUNT">HIITUN ACCOUNT</p>
+        <div id="account-login-view">
+          <h1 id="account-title" data-i18n="登录 HIITUN">登录 HIITUN</h1>
+          <p class="account-intro" id="account-intro" data-i18n="使用桌面软件中注册的邮箱和密码登录。">使用桌面软件中注册的邮箱和密码登录。</p>
+
+          <aside class="account-notice" aria-label="账号和数据说明">
+            <span class="account-notice-icon" aria-hidden="true">i</span>
+            <p><strong data-i18n="账号共用，工作资料保存在本机。">账号共用，工作资料保存在本机。</strong> <span data-i18n="草稿、素材、社媒授权与配置目前保存在桌面设备，不会因网页登录而上传或同步。">草稿、素材、社媒授权与配置目前保存在桌面设备，不会因网页登录而上传或同步。</span></p>
+          </aside>
+
+          <form class="account-form" id="login-form" novalidate>
+            <label class="account-field" for="login-email"><span data-i18n="邮箱">邮箱</span>
+              <input id="login-email" name="email" type="email" autocomplete="email" maxlength="254" required data-i18n-placeholder="输入注册邮箱" placeholder="输入注册邮箱">
+            </label>
+            <label class="account-field" for="login-password"><span data-i18n="密码">密码</span>
+              <input id="login-password" name="password" type="password" autocomplete="current-password" minlength="8" maxlength="72" required data-i18n-placeholder="输入密码" placeholder="输入密码">
+            </label>
+            <button class="account-submit" type="submit" data-i18n="登录">登录</button>
+            <p class="account-form-status" id="login-status" role="status" aria-live="polite"></p>
+          </form>
+
+          <form class="account-form" id="setup-form" hidden novalidate>
+            <label class="account-field" for="setup-email"><span data-i18n="邮箱">邮箱</span>
+              <input id="setup-email" name="email" type="email" autocomplete="email" maxlength="254" required data-i18n-placeholder="输入注册邮箱" placeholder="输入注册邮箱">
+            </label>
+            <label class="account-field" for="setup-code"><span data-i18n="邮箱验证码">邮箱验证码</span>
+              <span class="account-code-row">
+                <input id="setup-code" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required data-i18n-placeholder="6 位验证码" placeholder="6 位验证码">
+                <button class="account-code-button" id="send-code" type="button" data-i18n="获取验证码">获取验证码</button>
+              </span>
+            </label>
+            <label class="account-field" for="setup-password"><span data-i18n="设置新密码">设置新密码</span>
+              <input id="setup-password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="72" required data-i18n-placeholder="8–72 个字符" placeholder="8–72 个字符">
+            </label>
+            <label class="account-field" for="setup-confirm"><span data-i18n="确认新密码">确认新密码</span>
+              <input id="setup-confirm" name="confirm" type="password" autocomplete="new-password" minlength="8" maxlength="72" required data-i18n-placeholder="再次输入新密码" placeholder="再次输入新密码">
+            </label>
+            <p class="account-field-hint" data-i18n="首次登录请验证邮箱并设置密码；已有账号也可用此流程重置密码。">首次登录请验证邮箱并设置密码；已有账号也可用此流程重置密码。</p>
+            <button class="account-submit" type="submit" data-i18n="验证并继续">验证并继续</button>
+            <p class="account-form-status" id="setup-status" role="status" aria-live="polite"></p>
+          </form>
+
+          <p class="account-switch-row" id="login-switch-row"><span data-i18n="首次使用或忘记密码？">首次使用或忘记密码？</span><button class="account-switch" type="button" data-mode="setup" data-i18n="验证邮箱并设置密码">验证邮箱并设置密码</button></p>
+          <p class="account-switch-row" id="setup-switch-row" hidden><span data-i18n="已有密码？">已有密码？</span><button class="account-switch" type="button" data-mode="login" data-i18n="返回登录">返回登录</button></p>
+        </div>
+
+        <div class="account-signed-in" id="account-signed-in" hidden>
+          <div class="account-avatar" id="account-avatar" aria-hidden="true">H</div>
+          <h2 data-i18n="你已登录">你已登录</h2>
+          <p class="account-user-email" id="account-email"></p>
+          <div class="account-membership" aria-live="polite">
+            <div><span data-i18n="当前会员">当前会员</span><strong id="account-membership-plan">未开通会员</strong></div>
+            <p id="account-membership-detail">可选择下方付费套餐</p>
+          </div>
+          <p class="account-membership-sync" data-i18n="会员状态与桌面软件共用同一账号数据。">会员状态与桌面软件共用同一账号数据。</p>
+          <section class="account-plan-picker" aria-labelledby="account-plan-title">
+            <h3 id="account-plan-title" data-i18n="选择月度订阅计划">选择月度订阅计划</h3>
+            <div class="account-plan-grid" id="account-plan-grid">
+              <button class="account-plan-button" type="button" data-plan="standard"><span data-i18n="标准版">标准版</span><strong>$19 <small data-i18n="/ 月">/ 月</small></strong></button>
+              <button class="account-plan-button account-plan-pro" type="button" data-plan="pro"><span data-i18n="专业版">专业版</span><strong>$99 <small data-i18n="/ 永久">/ 永久</small></strong></button>
+            </div>
+            <p class="account-plan-note" data-i18n="付款由 Waffo 安全处理；确认后会员状态会同步到桌面软件。">付款由 Waffo 安全处理；确认后会员状态会同步到桌面软件。</p>
+            <p class="account-form-status" id="checkout-status" role="status" aria-live="polite"></p>
+            <a class="account-checkout-fallback" id="checkout-link" href="#" target="_blank" rel="noopener noreferrer" hidden data-i18n="打开安全结账页面">打开安全结账页面</a>
+            <div class="account-plan-controls">
+              <button class="account-plan-refresh" id="refresh-membership" type="button" data-i18n="刷新会员状态">刷新会员状态</button>
+              <button class="account-plan-cancel" id="cancel-subscription" type="button" hidden data-i18n="取消自动续费">取消自动续费</button>
+            </div>
+          </section>
+          <p class="account-data-note"><strong data-i18n="你的 HIITUN 账号已验证。">你的 HIITUN 账号已验证。</strong> <span data-i18n="桌面软件中的草稿、素材、社媒授权和其他工作数据仍保存在本机；当前网站不提供跨设备数据同步。">桌面软件中的草稿、素材、社媒授权和其他工作数据仍保存在本机；当前网站不提供跨设备数据同步。</span></p>
+          <div class="account-actions">
+            <a class="account-download-link" href="/#download" data-i18n="下载桌面软件">下载桌面软件</a>
+            <button class="account-logout" id="logout-button" type="button" data-i18n="退出登录">退出登录</button>
+          </div>
+          <p class="account-signout-status" id="logout-status" role="status" aria-live="polite"></p>
+        </div>
+
+        <div class="account-divider"><span data-i18n="安全连接">安全连接</span></div>
+        <p class="account-legal"><span data-i18n="继续即表示你已阅读并同意">继续即表示你已阅读并同意</span> <a href="/terms.html" data-terms-link data-i18n="服务条款">服务条款</a> <span data-i18n="和">和</span> <a href="/privacy-policy.html" data-privacy-link data-i18n="隐私政策">隐私政策</a>。</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer account-footer">
+    <div class="page-width footer-bottom">
+      <span>© <span data-current-year></span> HIITUN · <span data-i18n="佛山市南海区合豚互联网服务部">佛山市南海区合豚互联网服务部</span></span>
+      <div><a href="/terms.html" data-terms-link data-i18n="服务条款">服务条款</a><span class="footer-separator">·</span><a href="/privacy-policy.html" data-privacy-link data-i18n="隐私政策">隐私政策</a></div>
+    </div>
+  </footer>
+</body>
+</html>
