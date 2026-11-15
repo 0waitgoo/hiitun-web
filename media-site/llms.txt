@@ -12,7 +12,7 @@
 - Standard: $19 per month, 50 platform accounts, 8 automation profiles, 500 points per paid billing cycle
 - Pro: $99 one-time payment, permanent activation, 50 platform accounts, 8 automation profiles, 3,000 points once
 - Standard and Pro have the same features; only the payment method differs.
-- Points: $10 buys 3,000 points in the app. Built-in AI costs 1 point per successful generation or rewrite. Using your own AI API costs no points; you pay the provider directly.
+- Points: $1 buys 1,000 points in the app. Built-in AI costs 1 point per successful generation or rewrite. Using your own AI API costs no points; you pay the provider directly.
 - Plans cover software use only; third-party API fees are separate.
 
 ## Download
