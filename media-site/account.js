@@ -64,7 +64,7 @@
     '/ 月': '/ month',
     '/ 永久': '/ lifetime',
     '会员状态与桌面软件共用同一账号数据。': 'Your membership status is shared with the desktop app through your HIITUN account.',
-    '选择月度订阅计划': 'Choose a monthly plan',
+    '选择会员计划': 'Choose a plan',
     '付款由 Waffo 安全处理；确认后会员状态会同步到桌面软件。': 'Payments are securely processed by Waffo. Your membership syncs to the desktop app after confirmation.',
     '打开安全结账页面': 'Open secure checkout',
     '刷新会员状态': 'Refresh membership',
