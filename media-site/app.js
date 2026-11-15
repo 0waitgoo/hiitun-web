@@ -20,7 +20,7 @@
     "购买专业版": "Buy Pro",
     "每个成功付款周期赠 500 积分": "500 points per paid billing cycle",
     "一次赠 3,000 积分": "3,000 points with purchase",
-    "登录后购买会员，权益自动同步到桌面软件。积分包可在客户端购买，每 10 美元兑换 3,000 积分。": "Sign in to buy a membership and sync it to the desktop app. Buy 3,000 points for $10 in the app.",
+    "登录后购买会员，权益自动同步到桌面软件。积分包可在客户端购买，每 1 美元兑换 1,000 积分。": "Sign in to buy a membership and sync it to the desktop app. Buy 1,000 points for $1 in the app.",
     "体验版支持 3 个平台账号和 1 个配置。标准版和专业版均支持 50 个平台账号和 8 个配置。": "Free supports 3 accounts and 1 configuration. Standard and Pro each support 50 accounts and 8 configurations.",
     "使用 AI 如何计费？": "How is AI usage billed?",
     "内置 AI 每次成功生成或改写扣 1 积分。使用自有 API 时，费用由你向所选提供商支付。": "Built-in AI costs 1 point per successful generation or rewrite. For your own API, you pay the provider directly.",
