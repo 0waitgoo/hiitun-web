@@ -1,0 +1,32 @@
+# HIITUN Matrix
+
+> HIITUN Matrix is a desktop workspace for Windows and macOS that manages multiple social media accounts from one place. Log in once per account, write once with built-in AI or your own AI API, and publish to 15 platforms. Drafts, content and account tokens stay on the local device by default.
+
+## Platforms
+
+- 15 platforms: Douyin, Xiaohongshu, Bilibili, Weibo, Zhihu, Toutiao, Baijiahao, WeChat Video, WeChat Official Account, X (Twitter), Instagram, Facebook, YouTube, TikTok, Telegram
+
+## Plans (USD)
+
+- Explore: free, 3 platform accounts, 1 automation profile, 0 starting points
+- Standard: $19 per month, 50 platform accounts, 8 automation profiles, 500 points per paid billing cycle
+- Pro: $99 one-time payment, permanent activation, 50 platform accounts, 8 automation profiles, 3,000 points once
+- Standard and Pro have the same features; only the payment method differs.
+- Points: $10 buys 3,000 points in the app. Built-in AI costs 1 point per successful generation or rewrite. Using your own AI API costs no points; you pay the provider directly.
+- Plans cover software use only; third-party API fees are separate.
+
+## Download
+
+- Windows x64 and macOS (Apple Silicon and Intel) installers are available on the website and as direct GitHub Releases downloads, no account needed.
+- The macOS installers are currently unsigned and not notarized by Apple.
+
+## Links
+
+- [HIITUN Matrix (English)](https://media.hiitun.top/en/)
+- [HIITUN 多账号运营工作台 (Chinese)](https://media.hiitun.top/)
+- [Account / Log in](https://media.hiitun.top/account.html)
+- [Privacy Policy](https://media.hiitun.top/privacy-policy-en.html)
+- [Terms of Service](https://media.hiitun.top/terms-en.html)
+- [Privacy Policy (Chinese)](https://media.hiitun.top/privacy-policy.html)
+- [Terms of Service (Chinese)](https://media.hiitun.top/terms.html)
+- [Product Hunt launch](https://www.producthunt.com/posts/hiitun-matrix)
