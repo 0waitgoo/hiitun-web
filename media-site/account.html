@@ -103,6 +103,14 @@
             <p id="account-membership-detail">可选择下方付费套餐</p>
           </div>
           <p class="account-membership-sync" data-i18n="会员状态与桌面软件共用同一账号数据。">会员状态与桌面软件共用同一账号数据。</p>
+          <section class="account-plan-picker" aria-labelledby="redeem-title">
+            <h3 id="redeem-title" data-i18n="兑换积分或会员">兑换积分或会员</h3>
+            <form class="account-form" id="redeem-form">
+              <label class="account-field"><span data-i18n="兑换码">兑换码</span><input id="redeem-code" type="text" maxlength="80" required autocomplete="off" data-i18n-placeholder="输入兑换码" placeholder="输入兑换码"></label>
+              <button class="account-submit" type="submit" data-i18n="立即兑换">立即兑换</button>
+              <p class="account-form-status" id="redeem-status" role="status" aria-live="polite"></p>
+            </form>
+          </section>
           <section class="account-plan-picker" aria-labelledby="account-plan-title">
             <h3 id="account-plan-title" data-i18n="选择会员计划">选择会员计划</h3>
             <div class="account-plan-grid" id="account-plan-grid">

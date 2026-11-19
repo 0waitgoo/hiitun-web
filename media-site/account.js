@@ -65,6 +65,11 @@
     '/ 永久': '/ lifetime',
     '会员状态与桌面软件共用同一账号数据。': 'Your membership status is shared with the desktop app through your HIITUN account.',
     '选择会员计划': 'Choose a plan',
+    '兑换积分或会员': 'Redeem points or membership',
+    '兑换码': 'Redemption code',
+    '输入兑换码': 'Enter redemption code',
+    '立即兑换': 'Redeem',
+    '兑换成功，会员状态已更新。': 'Redemption successful. Membership updated.',
     '付款由 Waffo 安全处理；确认后会员状态会同步到桌面软件。': 'Payments are securely processed by Waffo. Your membership syncs to the desktop app after confirmation.',
     '打开安全结账页面': 'Open secure checkout',
     '刷新会员状态': 'Refresh membership',
@@ -97,6 +102,10 @@
   };
 
   const serverErrors = {
+    '兑换码无效或已过期': 'This code is invalid or expired.',
+    '当前账号已使用过此兑换码': 'This account has already redeemed this code.',
+    '兑换码使用次数已用完': 'This code has reached its usage limit.',
+    '操作过于频繁，请稍后再试': 'Too many attempts. Please try again later.',
     '请输入有效邮箱': 'Please enter a valid email address.',
     '密码长度应为 8–72 个字符': 'Password must be 8–72 characters.',
     '邮箱或密码不正确；首次登录请先验证邮箱并设置密码': 'Email or password is incorrect. For your first sign-in, verify your email and set a password.',
@@ -488,6 +497,29 @@
       setStatus(checkoutStatus, localizeServerError(error.message), 'error');
       cancelSubscriptionButton.disabled = false;
     }
+  });
+
+  document.querySelector('#redeem-form')?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const input = document.querySelector('#redeem-code');
+    const button = event.currentTarget.querySelector('button[type="submit"]');
+    const status = document.querySelector('#redeem-status');
+    const code = input.value.trim();
+    if (!code || button.disabled) return;
+    button.disabled = true;
+    setStatus(status, '', '');
+    try {
+      const result = await request('/auth/redeem', { code });
+      input.value = '';
+      if (result.user) { signedInUser = result.user; renderMembership(); }
+      const points = Number(result.pointsGranted);
+      const message = points > 0
+        ? (language === 'en' ? `Redeemed successfully: ${points.toLocaleString('en-US')} points added.` : `兑换成功，已到账 ${points.toLocaleString('zh-CN')} 积分。`)
+        : text('兑换成功，会员状态已更新。');
+      setStatus(status, message, 'success');
+    } catch (error) {
+      setStatus(status, localizeServerError(error.message), 'error');
+    } finally { button.disabled = false; }
   });
 
   function startCodeCountdown(seconds) {
